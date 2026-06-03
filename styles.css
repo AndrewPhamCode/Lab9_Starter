@@ -1,0 +1,143 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+}
+
+main {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin-bottom: 4px;
+  font-size: 1.4rem;
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 20px 0 8px;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+}
+
+/* ── Calculator ── */
+fieldset {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+legend {
+  font-weight: 600;
+  color: #333;
+}
+
+#first-num,
+#second-num {
+  width: 70px;
+  padding: 4px 6px;
+  font-size: 0.95rem;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+#operator {
+  padding: 4px;
+  font-size: 0.95rem;
+}
+
+#calculate {
+  margin-left: 4px;
+  padding: 4px 12px;
+  background: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#calculate:hover {
+  background: #0052a3;
+}
+
+output {
+  display: block;
+  margin-top: 8px;
+  padding: 5px 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background: #fafafa;
+  min-height: 28px;
+  width: 260px;
+  font-family: monospace;
+}
+
+/* ── Console Demo Buttons ── */
+#error-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+#error-btns > button {
+  padding: 7px 6px;
+  width: 128px;
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  text-align: center;
+  transition: background 0.15s;
+}
+
+#error-btns > button:hover {
+  background: #e8f0fe;
+  border-color: #0066cc;
+  color: #0066cc;
+}
+
+/* ── Status Bar ── */
+.status-bar {
+  margin-top: 14px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: monospace;
+  min-height: 36px;
+  word-break: break-word;
+}
+
+.status-bar.info  { background: #e8f0fe; border: 1px solid #93b4e4; color: #1a4a99; }
+.status-bar.ok    { background: #e6f4ea; border: 1px solid #7fbf8a; color: #1a6e2e; }
+.status-bar.warn  { background: #fff8e1; border: 1px solid #e0c96a; color: #7a5c00; }
+.status-bar.error { background: #fce8e6; border: 1px solid #e09090; color: #9a1a1a; }
+
+/* ── TrackJS section ── */
+.trackjs-note {
+  background: #fffbea;
+  border: 1px solid #f0d060;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.trackjs-note code {
+  background: #f0f0f0;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 0.82rem;
+}

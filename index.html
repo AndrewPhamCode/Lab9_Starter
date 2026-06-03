@@ -5,69 +5,54 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 9</title>
+  <title>Lab 9 – JS Error Handling</title>
 
-  <style>
-    button {
-      margin: 3px;
-    }
+  <!-- TrackJS — Step 5 -->
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({
+      token: "fd42e5ed0cf0447bb1c46436b0023384"
+    });
+  </script>
 
-    button:hover {
-      cursor: pointer;
-    }
-
-    #first-num,
-    #second-num {
-      width: 60px;
-    }
-
-    output {
-      border: 1px solid gray;
-      display: block;
-      height: 18px;
-      margin-top: 5px;
-      padding: 5px;
-      width: 240px;
-    }
-
-    main {
-      width: 800px;
-    }
-
-    #error-btns {
-      column-gap: 5px;
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 30px;
-      row-gap: 5px;
-    }
-
-    #error-btns>* {
-      padding: 8px 2px;
-      width: 122px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <main>
+    <h1>Lab 9 – JavaScript Error Handling</h1>
+
+    <!-- ── Step 3 & 4: Calculator with try/catch/finally + custom errors ── -->
+    <h2>Error Calculator</h2>
+    <p style="font-size:0.82rem;color:#666;margin:0 0 8px;">
+      Try dividing by zero, leaving a field blank, or entering non-numeric text to trigger
+      custom <code>ValidationError</code> / <code>DivisionByZeroError</code> exceptions.
+    </p>
     <form>
       <fieldset>
         <legend>Error Calculator</legend>
-        <input name="first-num" id="first-num" />
+        <!--
+          The inputs use data-attributes so the JS can look them up with
+          document.querySelector("[data-input='first']"). To demonstrate a realistic
+          null-reference error, comment out one of the inputs below — the catch
+          block will receive a ValidationError with a descriptive message.
+        -->
+        <input data-input="first"  name="first-num"  id="first-num"  placeholder="num" />
         <select name="operator" id="operator">
           <option>+</option>
           <option>-</option>
           <option>*</option>
           <option>/</option>
         </select>
-        <input name="second-num" id="second-num" />
-        <button id="calculate">Calculate</button>
+        <input data-input="second" name="second-num" id="second-num" placeholder="num" />
+        <button id="calculate" type="submit">Calculate</button>
         <br />
         <output></output>
       </fieldset>
     </form>
 
+    <!-- ── Step 2: Console API demo buttons ── -->
+    <h2>Console API Demos</h2>
     <section id="error-btns">
       <button>Console Log</button>
       <button>Console Error</button>
@@ -85,24 +70,24 @@
       <button>Console Trace</button>
       <button>Trigger a Global Error</button>
     </section>
+
+    <!-- Status bar — updated by JS to reflect the last action -->
+    <div id="status-bar" class="status-bar info">
+      Press any button above and open DevTools (F12) to see results.
+    </div>
+
+    <!-- ── Step 5: TrackJS instructions ── -->
+    <h2>Third-Party Error Monitoring (TrackJS)</h2>
+    <div class="trackjs-note">
+      <strong>Setup:</strong> Sign up at <a href="https://trackjs.com" target="_blank" rel="noopener">trackjs.com</a>,
+      copy your token, then uncomment the two TrackJS <code>&lt;script&gt;</code> tags in
+      <code>&lt;head&gt;</code> of this file and replace <code>YOUR_TOKEN_HERE</code>.
+      Once active, every uncaught error (including those from the
+      <em>Trigger a Global Error</em> button) will appear in your TrackJS dashboard.
+    </div>
   </main>
 
-  <script>
-    let form = document.querySelector('form');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      let output = document.querySelector('output');
-      let firstNum = document.querySelector('#first-num').value;
-      let secondNum = document.querySelector('#second-num').value;
-      let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
-    });
-
-    let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-
-    // Start your code here
-    // You may move this JS to another file if you wish
-  </script>
+  <script src="main.js"></script>
 </body>
 
 </html>
